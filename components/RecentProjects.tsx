@@ -5,6 +5,7 @@ import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa";
 import { useScroll, motion, useInView } from "framer-motion";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import { fadeIn } from "./ui/Variants";
 
 const RecentProjects = () => {
     const ref = useRef(null);
@@ -15,12 +16,22 @@ const RecentProjects = () => {
     const isInView = useInView(ref, { once: false });
     return (
         <div className="py-20" id="projects">
-            <h1 className="heading">
+            <motion.h1
+                variants={fadeIn("down", 0.2)}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: false, amount: 0.7 }}
+                className="heading"
+            >
                 A small selection of <span className="text-purple">recent projects</span>
-            </h1>
+            </motion.h1>
             <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-8 mt-10">
                 {projects.map(({ id, title, des, img, iconLists, link }) => (
-                    <div
+                    <motion.div
+                        variants={fadeIn(`${id % 2 === 0 ? "left" : "right"}`, 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.7 }}
                         key={id}
                         ref={ref}
                         className="sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[80vw]"
@@ -37,10 +48,12 @@ const RecentProjects = () => {
                                     <TextGenerateEffect
                                         className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1"
                                         words={title}
+                                        duration={0.25}
                                     />
                                     <TextGenerateEffect
                                         className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
                                         words={des}
+                                        duration={0.25}
                                     />
                                 </>
                             )}
@@ -62,7 +75,7 @@ const RecentProjects = () => {
                                 </div>
                             </div>
                         </PinContainer>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

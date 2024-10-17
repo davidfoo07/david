@@ -9,6 +9,7 @@ import MagicButton from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 import { motion, useInView } from "framer-motion";
 import { TextGenerateEffect } from "./TextGenerateEffect";
+import { fadeIn } from "./Variants";
 
 export const BentoGrid = ({ className, children }: { className?: string; children?: React.ReactNode }) => {
     return (
@@ -34,8 +35,8 @@ export const BentoGridItem = ({
     spareImg,
 }: {
     className?: string;
-    title?: string;
-    description?: string;
+    title: string;
+    description: string;
     id?: number;
     img?: string;
     imgClassName?: string;
@@ -63,7 +64,13 @@ export const BentoGridItem = ({
                     "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 26%, rgba(0,212,255,1) 100%)",
             }}
         >
-            <div className={`${id === 6 && "flex justify-center"} h-full`}>
+            <motion.div
+                variants={fadeIn("left", 0.2)}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: false, amount: 0.7 }}
+                className={`${id === 6 && "flex justify-center"} h-full`}
+            >
                 <div className="w-full h-full absolute">
                     {img && <img src={img} alt={img} className={cn(imgClassName, "object-cover, object-center")} />}
                 </div>
@@ -93,6 +100,7 @@ export const BentoGridItem = ({
                             <TextGenerateEffect
                                 className="font-sans font-bold text-lg lg:text-3xl max-w-96 z-10"
                                 words={title}
+                                duration={0.3}
                             />
                         </>
                     )}
@@ -149,7 +157,7 @@ export const BentoGridItem = ({
                         )}
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };
