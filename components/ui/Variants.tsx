@@ -1,5 +1,3 @@
-import React from "react";
-
 export const fadeIn = (direction: string, delay: number) => {
     return {
         hidden: {

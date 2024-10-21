@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
 import { navItems } from "@/components/data";
 import { FloatingNav } from "@/components/ui/FloatingNav";
-import { motion, useScroll } from "framer-motion";
 import Clients from "@/components/Clients";
 import Experience from "@/components/Experience";
 import Approach from "@/components/Approach";

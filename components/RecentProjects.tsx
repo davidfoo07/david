@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { projects } from "./data";
 import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa";
-import { useScroll, motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import { fadeIn } from "./ui/Variants";
 
