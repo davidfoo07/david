@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import MagicButton from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
 import { socialMedia } from "./data";
+import { motion } from "framer-motion";
+import { fadeIn } from "./ui/Variants";
 
 const Footer = () => {
     return (
@@ -10,9 +13,16 @@ const Footer = () => {
                 <img src="/footer-grid.svg" alt="grid" className="w-full h-full opacity-50 " />
             </div>
             <div className="flex flex-col items-center">
-                <h1 className="heading lg:max-2-[45vw]">
+                <motion.h1
+                    variants={fadeIn("down", 0.2)}
+                    initial="hidden"
+                    whileInView={"show"}
+                    viewport={{ once: false, amount: 0.7 }}
+                    className="heading lg:max-2-[45vw]"
+                >
                     Ready to take <span className="text-purple">your</span> digital presence to the next level?
-                </h1>
+                </motion.h1>
+
                 <p className="text-white-200 md:mt-10 my-5-text-center">
                     Reach out to me today and let&apos;s discuss how I can help you achieve your goals.
                 </p>
